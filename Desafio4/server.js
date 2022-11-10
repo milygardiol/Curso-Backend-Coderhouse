@@ -1,15 +1,18 @@
 const express = require("express")
-const {webRouter} = require("./routes/webRouter")
-const {apiRouter} = require("./routes/apiRouter")
+const {webRouter} = require("./routes/webRouter.js")
+const {apiRouter} = require("./routes/apiRouter.js")
+const { Router } = require('express');
 const app = express()
 
 //middleware => software entre medio de dos procesos
 app.use(express.json());
+
 //=> interpreta y lleva el json para el body
 app.use(express.urlencoded({ extended: true }));
+
 //routes
-app.use("/", webRouter)
-app.use("/api/productos", apiRouter)
+app.use('/', webRouter)
+app.use('/api/productos', apiRouter)
 
 
 //listen
