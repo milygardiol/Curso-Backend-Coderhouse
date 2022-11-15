@@ -1,0 +1,44 @@
+extends layout
+
+block contenido
+
+    if form
+        div
+            div(class="form__container")
+                h2 Ingrese productos
+                form(action="/productos", method="post") 
+                    div 
+                        label(for="title") Nombre
+                        input(type="text", name="title" id="title")
+                    div 
+                        label(for="price") Precio
+                        input(type="text", name="price" id="price")
+                    div 
+                        label(for="thumbnail") Foto URL
+                        input(type="text", name="thumbnail" id="thumbnail")
+                    input(type="submit", value="Añadir producto")
+    else
+        div 
+            div(class="form__container")
+                h2 Vista de productos
+                table(style="width:100%")
+                    tr
+                        th Name 
+                        th Price 
+                        th Picture
+
+                    each val in data
+                        tr 
+                            td #{val.title} 
+                            td #{val.price}  
+                            td 
+                                img(src=val.thumbnail, alt="")
+
+block header
+    header 
+        a(href="/") Agregar productos
+        a(href="/productos") Ver productos
+
+
+block footer 
+    footer Footer
