@@ -1,10 +1,8 @@
 const express = require("express")
-const {webRouter} = require("./routes/webRouter.js")
-const {apiRouter} = require("./routes/products.js")
+const {apiRouter} = require("./routes/apiRouter.js")
 const app = express()
 
 //routes
-app.use('/', webRouter)
 app.use('/api/productos', apiRouter)
 
 //middleware => software entre medio de dos procesos
